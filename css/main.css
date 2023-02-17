@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: #fff;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(33,2,2,1) 50%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(33,2,2,1) 50%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(33,2,2,1) 50%, rgba(0,0,0,1) 100%);
+
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.startContainer {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 50px;
+}
+
+.startContainer p {
+    width: 50%;
+    text-align: center;
+    color: #fff;
+}
+
+.startContainer .btn{
+    border: 2px solid #ff0000;
+    background-color: #ffc800;
+    color: #0c0c0c;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+main {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 50px;
+}
+
+.logo {
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: #fffad9;
+}
+
+.haendler {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.header *{
+    color: #fcf2b1;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    height: 60px;
+    padding: 5px;
+    padding-right: 50px;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(0.25turn, #fcf2b100, #fcf2b1, #fcf2b100);
+    border-image-slice: 1;
+    width:100%;
+}
+
+.header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+
+
+/* Login-Register */
+.authContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.authContainer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: fit-content;
+    padding: 20px;
+
+    border: 2px solid #fcf2b1;
+}
+
+.authContainer form input {
+    all: unset;
+    margin-bottom: 10px;
+    padding: 5px 15px;
+    background-color: #fcfcfc;
+    border-radius: 5px 15px;
+    color: #0c0c0c;
+    height: 30px;
+}
+
+.authContainer form input[type="submit"] {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 15px;
+    transition: ease-in-out .3s;
+}
+.authContainer form input[type="submit"]:hover {
+    background-color: #ffc800;
+}
+
+.authContainer form input:last-of-type {
+    align-self: flex-end;
+}
+
+.authContainer form label {
+    align-self: flex-start;
+}
