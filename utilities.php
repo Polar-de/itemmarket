@@ -4,5 +4,8 @@ require_once './functions/database.php';
 require_once './functions/user.php';
 require_once './functions/authentication.php';
 require_once './functions/helper.php';
+require_once './functions/items.php';
+require_once './functions/traderFunction.php';
+require_once './functions/buySell.php';
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/routes.php';

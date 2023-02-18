@@ -23,7 +23,8 @@
                 <a class="btn register" href="index.php/register">Registrieren</a>
                 <a class="btn login" href="index.php/login">Anmelden</a>
             <?php else :?>
-                <a class="btn zum Shop"  href="index.php/shop">zum Shop</a>
+                <a class="btn zumShop"  href="index.php/shop">zum Shop</a>
+                <a class="btn inventar"  href="index.php/inventory">zum Inventar</a>
             <?php endif?>
         </div>
         

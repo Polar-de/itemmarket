@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     text-decoration: none;
     color: #fff;
+
+    font-family: 'MedievalSharp', cursive;
 }
+
 
 body {
     width: 100vw;
@@ -13,8 +18,6 @@ body {
     background: -moz-linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(33,2,2,1) 50%, rgba(0,0,0,1) 100%);
     background: -webkit-linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(33,2,2,1) 50%, rgba(0,0,0,1) 100%);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(33,2,2,1) 50%, rgba(0,0,0,1) 100%);
-
-    overflow: hidden;
 }
 
 header {
@@ -81,24 +84,64 @@ h1 {
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     gap: 25px;
     height: 60px;
-    padding: 5px;
-    padding-right: 50px;
+    padding: 5px 25px;
     border-bottom: 1px solid transparent;
     border-image: linear-gradient(0.25turn, #fcf2b100, #fcf2b1, #fcf2b100);
     border-image-slice: 1;
     width:100%;
 }
 
-.header a {
+.navContainer {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
-    font-size: 1.2rem;
+    justify-content: flex-end;
+    width: 30%;
+    margin-left: auto;
+  }
+
+.profileLink, .balanceLink {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin: 0 10px;
+}
+.tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    width: 120px;
+    top: 100%;
+    left: 0;
+    margin-left: -60px;
+}
+.balanceLink:hover .tooltip-text{
+    visibility: visible;
+}
+
+
+.navContainer span {
+    margin-left: 5px;
+}
+
+.profileIcon, .cartIcon {
+    height: 24px;
+}
+
+.header .logo {
+    margin: 0;
+    max-height: 100%;
+    width: auto;
 }
 
 
@@ -152,4 +195,8 @@ h1 {
 
 .authContainer form label {
     align-self: flex-start;
+}
+
+.itemContainer {
+    overflow: scroll;
 }

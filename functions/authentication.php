@@ -24,7 +24,7 @@ function Login($name, $password) {
 
         if ($passwordIsValid) {
             AddUserName($name);
-            AddUserID();
+            AddUserID($_SESSION['userName']);
             header('Location: index.php/shop');
         } else {
             throw new Exception("Das eingegebene Passwort ist falsch.", 1);
@@ -88,7 +88,7 @@ function Register(string $password, string $passwordConfirm, string $mail, strin
             $errors[] = "Benutzername oder Email sind bereits vergeben.";
         } else {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("INSERT INTO user (username, mail, password) VALUES(?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO user (username, email, password) VALUES(?, ?, ?)");
             $stmt->bind_param("sss", $name, $mail, $hashedPassword);
             $stmt->execute();
             $stmterror = $stmt->error;
@@ -98,7 +98,7 @@ function Register(string $password, string $passwordConfirm, string $mail, strin
                 $errors[] = "Fehler bei der Speicherung in der Datenbank!";
             } else {
                 AddUserName($name);
-                AddUserID();
+                AddUserID($_SESSION['userName']);
                 header("Location: ../index.php/shop");
                 exit();
             }

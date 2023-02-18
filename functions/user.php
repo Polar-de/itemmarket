@@ -29,6 +29,22 @@ function AddUserName($name) {
     $_SESSION['userName'] = $name;
 } 
 
-function AddUserID() {
-    $_SESSION["userID"] = uniqid(true);
+function AddUserID($userName) {
+    $conn = GetDB();
+    $stmt = $conn->prepare('SELECT id FROM user WHERE username=?');
+    $stmt->bind_param('s', $userName);
+    $stmt->execute();
+
+    $result = $stmt->get_result()->fetch_assoc();
+    $_SESSION["userID"] = $result['id'];
+}
+
+function GetBalance($userID) {
+    $conn = GetDB();
+    $stmt = $conn->prepare('SELECT credit FROM user WHERE id = ?');
+    $stmt->bind_param('s', $userID);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc()['credit'];
+
+    return $result;
 }

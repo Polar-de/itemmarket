@@ -64,7 +64,53 @@ if (strpos($route, '/profile') !== false) {
 // Händler
 
 if (strpos($route, '/drachen') !== false) {
-    $_SESSION['trader'] = 'Dragon';
+    $_SESSION['traderName'] = 'Drachen';
     require_once SITES_DIR . '/trader.php';
+    exit();
+}
+
+if (strpos($route, '/potions') !== false) {
+    $_SESSION['traderName'] = 'Potions';
+    require_once SITES_DIR . '/trader.php';
+    exit();
+}
+
+if (strpos($route, '/accessoires') !== false) {
+    $_SESSION['traderName'] = 'Accessoires';
+    require_once SITES_DIR . '/trader.php';
+    exit();
+}
+
+// // //
+
+if (strpos($route, '/trader') !== false) {
+    require_once SITES_DIR . '/trader.php';
+    exit();
+}
+
+if (strpos($route, '/sell') !== false) {
+    $itemID = (int) explode('/', $route)[2];
+    $traderID = GetTraderID($_SESSION['traderName']);
+    if (CanBuySellAtTrader($itemID)) {
+        BuySellItem($userID, $traderID, $itemID);
+        AddCredit($userID, GetPrice($itemID) * 90 / 100);
+        header('Location: '.$mainURL.'index.php/trader');
+        exit();
+    }
+}
+
+if (strpos($route, '/buy') !== false) {
+    $itemID = (int) explode('/', $route)[2];
+    $traderID = GetTraderID($_SESSION['traderName']);
+    if (CanBuySellAtTrader($itemID) && GetBalance($userID) > GetPrice($itemID)) {
+        BuySellItem($traderID, $userID, $itemID);
+        RemoveCredit($userID, GetPrice($itemID));
+        header('Location: '.$mainURL.'index.php/trader');
+        exit();
+    }
+}
+
+if (strpos($route, '/inventory') !== false) {
+    require_once SITES_DIR . '/inventory.php';
     exit();
 }

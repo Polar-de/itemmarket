@@ -1,16 +1,24 @@
+<?php 
+$item = GetItemInfo($itemID);
+$traderID = GetTraderID($_SESSION['traderName']);
+$traderQuantity = GetItemQuantityFromUser($traderID, $itemID);
+$userQuantity = GetItemQuantityFromUser($userID, $itemID);
+?>
 <div>
-    <img src="https://via.placeholder.com/125x125" alt="">
+    <img src="<?php echo 'assets/' . $item['imagepath']?>" width="150px" height="150px" alt="">
     <div class="itemInfo">
-        <h2>Name</h2>
-        <span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At</span>
+        <h2><?php echo $item['name']; ?></h2>
+        <span><?php echo $item['description']; ?></span>
         <div>
             <div>
-                <h3>450</h3>
-                <a href="index.php/sell/">Verkaufen</a>
+                <h4><?php echo 'Verkaufspreis: ' . ($item['price'] * 90 / 100); ?></h4>
+                <p>Im Inventar: <?php echo $userQuantity ?></p>
+                <a href="index.php/sell/<?php echo $item['id']; ?>">Verkaufen</a>
             </div>
             <div>
-                <h3>500</h3>
-                <a href="index.php/buy/">Kaufen</a>
+                <h4><?php echo 'Kaufpreis: ' . $item['price']; ?></h4>
+                <p>Auf Lager: <?php echo $traderQuantity ?></p>
+                <a href="index.php/buy/<?php echo $item['id']; ?>">Kaufen</a>
             </div>
         </div>
     </div>
