@@ -11,8 +11,6 @@
 <body>
     <?php require_once SITES_DIR . '/header.php'; ?>
     <main>
-        <img class="logo" src="assets/logo.png" alt="Logo">
-
         <h1>Händler</h1>
 
         <div class="haendler">

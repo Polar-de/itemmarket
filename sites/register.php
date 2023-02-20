@@ -15,7 +15,6 @@ ini_set('display_errors', 1);
 </head>
 <body>
     <?php
-    //include("database.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = clean_data($_POST['name']);
         $mail = clean_data($_POST['mail']);
@@ -23,7 +22,7 @@ ini_set('display_errors', 1);
         $passwordConfirm = $_POST['passwordConfirm'];
 
         Register($password, $passwordConfirm, $mail, $name);
-       
+        
     }
 
     ?>

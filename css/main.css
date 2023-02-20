@@ -20,14 +20,6 @@ body {
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(33,2,2,1) 50%, rgba(0,0,0,1) 100%);
 }
 
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-}
-
 .startContainer {
     margin-top: 150px;
     display: flex;
@@ -43,16 +35,32 @@ header {
     color: #fff;
 }
 
-.startContainer .btn{
-    border: 2px solid #ff0000;
-    background-color: #ffc800;
+.btn{
+    display: block;
+    border: 2px solid #ff7373;
+    background-color: #fcf2b1;
     color: #0c0c0c;
     border-radius: 15px;
     padding: 5px 10px;
-    margin: 15px;
     font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #ff7373;
+    border: 2px solid #fcf2b1;
+}
+
+.btn-small {
+    font-size: 1rem;
+}
+
+.btn-large {
     font-size: 1.5rem;
 }
+
 
 main {
     margin-top: 50px;
@@ -77,6 +85,8 @@ h1 {
     gap: 50px;
 }
 
+/* Header */
+
 .header *{
     color: #fcf2b1;
 }
@@ -95,6 +105,21 @@ h1 {
     width:100%;
 }
 
+.header .logoContainer {
+    margin: 0;
+    max-height: 100%;
+    height: 100%;
+    width: 30%;
+    margin-right: auto;
+}
+.header .logo {
+    max-height: 100%;
+    margin: 0;
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+}
+
 .navContainer {
     display: flex;
     align-items: center;
@@ -102,6 +127,15 @@ h1 {
     width: 30%;
     margin-left: auto;
   }
+
+.linkContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .profileLink, .balanceLink {
     display: flex;
@@ -138,10 +172,17 @@ h1 {
     height: 24px;
 }
 
-.header .logo {
-    margin: 0;
-    max-height: 100%;
-    width: auto;
+.nav-btn {
+    font-size: 1.5rem;
+    border-bottom: 1px solid #fcf2b1;
+    border-radius: 15px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    transition: .5s ease-in-out;
+}
+.nav-btn:hover {
+    background-color: #fcf2b1;
+    color: #0c0c0c;
 }
 
 
@@ -150,11 +191,16 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
 }
+
+.authContainer.change {
+    justify-content: flex-start;
+}
+
 
 .authContainer form {
     display: flex;
@@ -197,6 +243,80 @@ h1 {
     align-self: flex-start;
 }
 
+.authContainer input[type='radio'] {
+    display: none;
+}
+
+.authContainer input[type='radio']:checked + label img {
+    border: 2px solid #fcf2b1;
+    border-radius: 100%;
+}
+
+
 .itemContainer {
     overflow: scroll;
+}
+
+/* Profile */
+
+.profileContainer {
+    margin-top: 100px;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 15px;
+    border: 1px solid #fcf2b1;
+    padding: 15px;
+}
+
+.profileSettings {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 15px;
+    border: 1px solid #fcf2b1;
+    padding: 15px;
+}
+
+/* Item-Cards */
+
+.itemContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    gap: 20px;
+    margin-bottom: 100px;
+}
+
+.itemCard {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    max-width: 500px;
+    min-height: 200px;
+    border: 1px solid #fcf2b188;
+    border-radius: 5px 15px;
+    padding: 15px;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.sellBuy {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
 }

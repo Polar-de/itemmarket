@@ -11,17 +11,23 @@
 <body>
     <?php require_once SITES_DIR . '/header.php'; ?>
     <main>
-        <img class="logo" src="assets/logo.png" alt="Logo">
-
-        <h1>Profile</h1>
-
-        <div>
-            <?php $data = GetUserInfo() ?>
-            <h3><?= $data['username'] ?></h3>
-            <h4><?= $data['email'] ?></h4>
-            <h4><?= $data['credit'] ?></h4>
+        <div class="profileContainer">
+            <div class="profileInfo">
+                <h1>Profil Info</h1>
+                <?php $data = GetUserInfo() ?>
+                <h3>Spielername: <?= $data['username'] ?></h3>
+                <h4>Email: <?= $data['email'] ?></h4>
+                <h4>Drachenschuppen: <?= $data['credit'] ?></h4>
+                <a class="btn btn-small" href="index.php/logout">Abmelden</a>
+            </div>
+            
+            <div class="profileSettings">
+                <a class="btn btn-small" href="index.php/change/img">Profilbild ändern</a>
+                <a class="btn btn-small" href="index.php/change/name">Spielername ändern</a>
+                <a class="btn btn-small" href="index.php/change/email">Email ändern</a>
+                <a class="btn btn-small" href="index.php/change/password">Passwort ändern</a>
+            </div>
         </div>
-
     </main>
 </body>
 </html>

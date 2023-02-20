@@ -48,3 +48,21 @@ function GetBalance($userID) {
 
     return $result;
 }
+
+function GetProfileImage($userID) {
+    $conn = GetDB();
+    $stmt = $conn->prepare('SELECT imagepath FROM user WHERE id = ?');
+    $stmt->bind_param('s', $userID);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc()['imagepath'];
+
+    return $result;
+}
+
+function ChangeProfileImg($path, $userID) {
+    $conn = GetDB();
+    $stmt = $conn->prepare('UPDATE user SET imagepath = ? WHERE id = ?');
+    $stmt->bind_param('ss', $path, $userID);
+    $stmt->execute();
+    header('Location: index.php/profile');
+}

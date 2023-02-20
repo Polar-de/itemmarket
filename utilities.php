@@ -7,5 +7,7 @@ require_once './functions/helper.php';
 require_once './functions/items.php';
 require_once './functions/traderFunction.php';
 require_once './functions/buySell.php';
+// config wird geladen in der der Datenbank zugang gespeichert ist
 require_once __DIR__ . '/config.php';
+
 require_once __DIR__ . '/routes.php';

@@ -20,14 +20,13 @@
         
         <div class="btnContainer">
             <?php if (!isset($userID)):?>
-                <a class="btn register" href="index.php/register">Registrieren</a>
-                <a class="btn login" href="index.php/login">Anmelden</a>
+                <a class="btn btn-large" href="index.php/register">Registrieren</a>
+                <a class="btn btn-large" href="index.php/login">Anmelden</a>
             <?php else :?>
-                <a class="btn zumShop"  href="index.php/shop">zum Shop</a>
-                <a class="btn inventar"  href="index.php/inventory">zum Inventar</a>
+                <a class="btn btn-large"  href="index.php/shop">zum Händler</a>
+                <a class="btn btn-large"  href="index.php/inventory">zum Inventar</a>
             <?php endif?>
         </div>
-        
     </div>
     </main>
 </body>

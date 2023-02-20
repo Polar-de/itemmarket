@@ -22,7 +22,7 @@ function GetAllInvenoryItems($userID) {
 
 function GetItemInfo($itemID) {
     $conn = GetDB();
-    $stmt = $conn->prepare('SELECT * FROM items WHERE id = ?');
+    $stmt = $conn->prepare('SELECT * FROM items WHERE id = ?'); 
     $stmt->bind_param('s', $itemID);
     $stmt->execute();
 

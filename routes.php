@@ -46,71 +46,97 @@ if (strpos($route, '/login') !== false) {
     exit();
 }
 
-if (strpos($route, '/shop') !== false) {
-    require_once SITES_DIR . '/shop.php';
-    exit();
-}
-
-if (strpos($route, '/logout') !== false) {
-    require_once COMPONENTS_DIR . '/logout.php';
-    exit();
-}
-
-if (strpos($route, '/profile') !== false) {
-    require_once SITES_DIR . '/profile.php';
-    exit();
-}
-
-// Händler
-
-if (strpos($route, '/drachen') !== false) {
-    $_SESSION['traderName'] = 'Drachen';
-    require_once SITES_DIR . '/trader.php';
-    exit();
-}
-
-if (strpos($route, '/potions') !== false) {
-    $_SESSION['traderName'] = 'Potions';
-    require_once SITES_DIR . '/trader.php';
-    exit();
-}
-
-if (strpos($route, '/accessoires') !== false) {
-    $_SESSION['traderName'] = 'Accessoires';
-    require_once SITES_DIR . '/trader.php';
-    exit();
-}
-
-// // //
-
-if (strpos($route, '/trader') !== false) {
-    require_once SITES_DIR . '/trader.php';
-    exit();
-}
-
-if (strpos($route, '/sell') !== false) {
-    $itemID = (int) explode('/', $route)[2];
-    $traderID = GetTraderID($_SESSION['traderName']);
-    if (CanBuySellAtTrader($itemID)) {
-        BuySellItem($userID, $traderID, $itemID);
-        AddCredit($userID, GetPrice($itemID) * 90 / 100);
-        header('Location: '.$mainURL.'index.php/trader');
+if (isset($userID)) {
+    if (strpos($route, '/shop') !== false) {
+        require_once SITES_DIR . '/shop.php';
         exit();
     }
-}
-
-if (strpos($route, '/buy') !== false) {
-    $itemID = (int) explode('/', $route)[2];
-    $traderID = GetTraderID($_SESSION['traderName']);
-    if (CanBuySellAtTrader($itemID) && GetBalance($userID) > GetPrice($itemID)) {
-        BuySellItem($traderID, $userID, $itemID);
-        RemoveCredit($userID, GetPrice($itemID));
-        header('Location: '.$mainURL.'index.php/trader');
+    
+    if (strpos($route, '/logout') !== false) {
+        require_once COMPONENTS_DIR . '/logout.php';
         exit();
     }
-}
-
-if (strpos($route, '/inventory') !== false) {
-    require_once SITES_DIR . '/inventory.php';
+    
+    if (strpos($route, '/profile') !== false) {
+        require_once SITES_DIR . '/profile.php';
+        exit();
+    }
+    
+    // Händler
+    
+    if (strpos($route, '/drachen') !== false) {
+        $_SESSION['traderName'] = 'Drachen';
+        require_once SITES_DIR . '/trader.php';
+        exit();
+    }
+    
+    if (strpos($route, '/potions') !== false) {
+        $_SESSION['traderName'] = 'Potions';
+        require_once SITES_DIR . '/trader.php';
+        exit();
+    }
+    
+    if (strpos($route, '/accessoires') !== false) {
+        $_SESSION['traderName'] = 'Accessoires';
+        require_once SITES_DIR . '/trader.php';
+        exit();
+    }
+    
+    // // //
+    
+    if (strpos($route, '/trader') !== false) {
+        require_once SITES_DIR . '/trader.php';
+        exit();
+    }
+    
+    if (strpos($route, '/sell') !== false) {
+        $itemID = (int) explode('/', $route)[2];
+        $traderID = GetTraderID($_SESSION['traderName']);
+        if (CanBuySellAtTrader($itemID)) {
+            BuySellItem($userID, $traderID, $itemID);
+            AddCredit($userID, GetPrice($itemID) * 90 / 100);
+            header('Location: '.$mainURL.'index.php/trader');
+            exit();
+        }
+    }
+    
+    if (strpos($route, '/buy') !== false) {
+        $itemID = (int) explode('/', $route)[2];
+        $traderID = GetTraderID($_SESSION['traderName']);
+        if (CanBuySellAtTrader($itemID) && GetBalance($userID) > GetPrice($itemID)) {
+            BuySellItem($traderID, $userID, $itemID);
+            RemoveCredit($userID, GetPrice($itemID));
+            header('Location: '.$mainURL.'index.php/trader');
+            exit();
+        }
+    }
+    
+    if (strpos($route, '/inventory') !== false) {
+        require_once SITES_DIR . '/inventory.php';
+        exit();
+    }
+    
+    
+    if (strpos($route, '/change/password') !== false) {
+        $settings = 'password';
+        require_once SITES_DIR . '/userSettings.php';
+        exit();
+    }
+    if (strpos($route, '/change/email') !== false) {
+        require_once SITES_DIR . '/userSettings.php';
+        exit();
+    }
+    if (strpos($route, '/change/name') !== false) {
+        require_once SITES_DIR . '/userSettings.php';
+        exit();
+    }
+    if (strpos($route, '/change/img') !== false) {
+        $settings = 'profileImg';
+        require_once SITES_DIR . '/userSettings.php';
+        exit();
+    }
+} else {
+    require_once SITES_DIR . '/start.php';
     exit();
 }
+
