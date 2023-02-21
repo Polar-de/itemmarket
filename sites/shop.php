@@ -14,9 +14,9 @@
         <h1>Händler</h1>
 
         <div class="haendler">
-            <a href="index.php/potions"><img src="https://via.placeholder.com/200x300?text=Potions" alt=""></a>
-            <a href="index.php/drachen"><img src="https://via.placeholder.com/200x300?text=Drachen" alt=""></a>
-            <a href="index.php/accessoires"><img src="https://via.placeholder.com/200x300?text=Accessoires" alt=""></a>
+            <a href="index.php/potions"><img src="https://via.placeholder.com/200x300?text=Potions" alt="">Potions</a>
+            <a href="index.php/drachen"><img src="assets/dragonTrader.png" alt="">Drachen</a>
+            <a href="index.php/accessoires"><img src="https://via.placeholder.com/200x300?text=Accessoires" alt="">Accessoires</a>
         </div>
     </main>
 </body>

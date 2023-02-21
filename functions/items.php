@@ -12,7 +12,7 @@ function GetAllItems($traderName) {
 
 function GetAllInvenoryItems($userID) {
     $conn = GetDB();
-    $stmt = $conn->prepare('SELECT itemID FROM inventory WHERE ownerID = ?');
+    $stmt = $conn->prepare('SELECT itemID FROM inventory WHERE ownerID = ? AND quantity > 0');
     $stmt->bind_param('s', $userID);
     $stmt->execute();
 
