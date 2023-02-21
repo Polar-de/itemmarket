@@ -26,12 +26,10 @@ function Login($name, $password) {
             AddUserName($name);
             AddUserID($_SESSION['userName']);
             header('Location: index.php/shop');
-        } else {
-            throw new Exception("Das eingegebene Passwort ist falsch.", 1);
         }
         
     } catch (Exception $e) {
-        echo $e;
+        echo $e->getMessage();
         return false;
     }
 }
@@ -58,7 +56,7 @@ function VerifyPassword($password, $hash) {
             throw new Exception("Das eingegebene Passwort ist falsch.", 1);
         }
     } catch (Exception $e) {
-        echo $e;
+        echo $e->getMessage();
         return false;
     }
 }

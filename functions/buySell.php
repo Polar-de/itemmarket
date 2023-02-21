@@ -57,6 +57,23 @@ function CanBuySellAtTrader($itemID) {
     }
 }
 
+function PlayerHasItemToSell($userID, $itemID) {
+    $conn = GetDB();
+    $stmt = $conn->prepare('SELECT quantity FROM inventory WHERE ownerID = ? AND itemID = ?');
+    $stmt->bind_param('ss', $userID, $itemID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        if ($result->fetch_assoc()['quantity'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
 
 
 function AddCredit($userID, $amount) {

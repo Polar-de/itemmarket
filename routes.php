@@ -92,9 +92,12 @@ if (isset($userID)) {
     if (strpos($route, '/sell') !== false) {
         $itemID = (int) explode('/', $route)[2];
         $traderID = GetTraderID($_SESSION['traderName']);
-        if (CanBuySellAtTrader($itemID)) {
+        if (CanBuySellAtTrader($itemID) && PlayerHasItemToSell($userID, $itemID)) {
             BuySellItem($userID, $traderID, $itemID);
             AddCredit($userID, GetPrice($itemID) * 90 / 100);
+            header('Location: '.$mainURL.'index.php/trader');
+            exit();
+        } else {
             header('Location: '.$mainURL.'index.php/trader');
             exit();
         }
@@ -108,6 +111,8 @@ if (isset($userID)) {
             RemoveCredit($userID, GetPrice($itemID));
             header('Location: '.$mainURL.'index.php/trader');
             exit();
+        } else {
+            header('Location: '.$mainURL.'index.php/trader');
         }
     }
     
